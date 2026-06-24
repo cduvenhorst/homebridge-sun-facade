@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor / OS
+.DS_Store
+.vscode/
+.idea/
+
+# Homebridge local test instance
+.homebridge/
+
+# Superpowers workflow artifacts (specs, plans, scratch)
+docs/superpowers/
+.superpowers/
+
+# Packaged tarballs (build artifacts from `npm pack`)
+*.tgz
+
+# Claude Code project guidance (local only, not part of the public repo)
+CLAUDE.md

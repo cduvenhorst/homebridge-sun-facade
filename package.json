@@ -1,0 +1,50 @@
+{
+  "name": "homebridge-sun-facade",
+  "displayName": "Sun Facade",
+  "version": "0.1.4",
+  "description": "Homebridge plugin exposing one HomeKit contact sensor per facade based on the sun's azimuth and altitude.",
+  "license": "Apache-2.0",
+  "author": "Carsten Duvenhorst",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cduvenhorst/homebridge-sun-facade.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cduvenhorst/homebridge-sun-facade/issues"
+  },
+  "homepage": "https://github.com/cduvenhorst/homebridge-sun-facade#readme",
+  "type": "commonjs",
+  "main": "dist/index.js",
+  "files": [
+    "dist",
+    "config.schema.json"
+  ],
+  "engines": {
+    "node": ">=18",
+    "homebridge": "^1.8.0 || ^2.0.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "sun",
+    "azimuth",
+    "altitude",
+    "shading",
+    "facade"
+  ],
+  "dependencies": {
+    "suncalc": "^1.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/suncalc": "^1.9.2",
+    "homebridge": "^2.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "pluginAlias": "SunFacade",
+  "pluginType": "platform",
+  "singular": true,
+  "headerDisplay": "Exposes one HomeKit contact sensor per facade. A sensor is open while the sun illuminates that facade (azimuth range plus a minimum altitude). Wire the sensors to scenes in the Home app yourself.",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "latitude": {
+        "title": "Latitude",
+        "type": "number",
+        "required": true,
+        "minimum": -90,
+        "maximum": 90,
+        "placeholder": "52.37",
+        "description": "Geographic latitude in decimal degrees (north–south axis). Range −90 to 90; positive = north, negative = south. In Google Maps and most apps a place's coordinates are shown as 'latitude, longitude' — copy the FIRST number here. Example: 52.37."
+      },
+      "longitude": {
+        "title": "Longitude",
+        "type": "number",
+        "required": true,
+        "minimum": -180,
+        "maximum": 180,
+        "placeholder": "9.74",
+        "description": "Geographic longitude in decimal degrees (east–west axis). Range −180 to 180; positive = east, negative = west. Coordinates are usually shown as 'latitude, longitude' — copy the SECOND number here. Example: 9.74."
+      },
+      "updateIntervalSeconds": {
+        "title": "Update interval (seconds)",
+        "type": "integer",
+        "required": true,
+        "default": 60,
+        "minimum": 5,
+        "maximum": 3600
+      },
+      "updateMode": {
+        "title": "Update mode",
+        "type": "string",
+        "required": true,
+        "default": "onChange",
+        "oneOf": [
+          { "title": "Only on change", "enum": ["onChange"] },
+          { "title": "Every tick", "enum": ["always"] }
+        ]
+      },
+      "facades": {
+        "title": "Facades",
+        "type": "array",
+        "required": true,
+        "items": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "title": "Name",
+              "type": "string",
+              "required": true,
+              "placeholder": "East",
+              "description": "Sensor name shown in the Home app. Must not be empty."
+            },
+            "azimuthMin": {
+              "title": "Azimuth min (deg, 0=N 90=E 180=S 270=W)",
+              "type": "number",
+              "required": true,
+              "minimum": 0,
+              "maximum": 360,
+              "description": "Start of the sky sector the sun must be in (compass degrees). If min > max the range wraps across 0°/360° (e.g. 315→45 for north)."
+            },
+            "azimuthMax": {
+              "title": "Azimuth max (deg, 0=N 90=E 180=S 270=W)",
+              "type": "number",
+              "required": true,
+              "minimum": 0,
+              "maximum": 360,
+              "description": "End of the sky sector the sun must be in (compass degrees)."
+            },
+            "altitudeMin": {
+              "title": "Minimum altitude (deg above horizon)",
+              "type": "number",
+              "required": true,
+              "default": 0,
+              "minimum": -90,
+              "maximum": 90,
+              "description": "The sensor only opens when the sun is at least this high above the horizon. 0 = horizon; raise it to ignore low sun behind neighbouring houses."
+            }
+          }
+        }
+      }
+    }
+  }
+}
